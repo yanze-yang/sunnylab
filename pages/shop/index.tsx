@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import SHOP_DATA from "../shop-data.json";
 import { useContext } from "react";
 import { ProductsContext } from "../../contexts/products.context";
+import ProductCard from "../../components/ProductCard";
 
 const Page = styled.div`
   background-color: #f0f0f0;
@@ -19,13 +19,6 @@ const CardWrapper = styled.div`
   justify-content: space-between;
 `;
 
-const Card = styled.div`
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-  padding: 16px;
-`;
-
 export default function ShopIndex() {
   const { products } = useContext(ProductsContext);
 
@@ -34,12 +27,8 @@ export default function ShopIndex() {
       navbar
       <Container>
         <CardWrapper>
-          {products.map(({ id, name, imageUrl, price }) => (
-            <Card key={id}>
-              <h1>{name}</h1>
-              <img src={imageUrl} alt={name} />
-              <p>{price}</p>
-            </Card>
+          {products.map((product) => (
+            <ProductCard key={product.id} product={product} />
           ))}
         </CardWrapper>
       </Container>
