@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import SHOP_DATA from "../shop-data.json";
 import { useContext } from "react";
-import { ProductsContext } from "../contexts/products.context";
+import { ProductsContext } from "../../contexts/products.context";
 
 const Page = styled.div`
   background-color: #f0f0f0;
