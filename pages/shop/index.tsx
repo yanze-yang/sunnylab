@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import SHOP_DATA from "../shop-data.json";
 
 const Page = styled.div`
   background-color: #f0f0f0;
@@ -8,6 +9,12 @@ const Page = styled.div`
 const Container = styled.div`
   max-width: 1280px;
   margin: auto;
+`;
+
+const CardWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 `;
 
 const Card = styled.div`
@@ -22,18 +29,15 @@ export default function ShopIndex() {
     <Page>
       navbar
       <Container>
-        <Card>
-          <h1>Shop</h1>
-          <p>Here is a list of products</p>
-        </Card>
-        <Card>
-          <h1>Shop</h1>
-          <p>Here is a list of products</p>
-        </Card>{" "}
-        <Card>
-          <h1>Shop</h1>
-          <p>Here is a list of products</p>
-        </Card>
+        <CardWrapper>
+          {SHOP_DATA.map(({ id, name, imageUrl, price }) => (
+            <Card key={id}>
+              <h1>{name}</h1>
+              <img src={imageUrl} alt={name} />
+              <p>{price}</p>
+            </Card>
+          ))}
+        </CardWrapper>
       </Container>
     </Page>
   );
