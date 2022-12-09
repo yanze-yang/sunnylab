@@ -2,9 +2,16 @@ import React, { useContext } from "react";
 import { CartContext } from "../contexts/cart.context";
 
 export default function Cart() {
-  const { cartItems } = useContext(CartContext);
+  const { cartItems, cartCount } = useContext(CartContext);
   return (
-    <div>
+    <div
+      style={{
+        position: "absolute",
+        top: "20px",
+        right: "100px",
+        backgroundColor: "#efefef",
+      }}
+    >
       {cartItems.map((item) => (
         <div>
           <h1>{item.name}</h1>

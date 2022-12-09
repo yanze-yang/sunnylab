@@ -1,4 +1,10 @@
-import { createContext, Dispatch, SetStateAction, useState } from "react";
+import {
+  createContext,
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useState,
+} from "react";
 
 type cartProductProps = {
   id: number;
@@ -16,6 +22,7 @@ interface CartContextInterface {
   setIsCartOpen: Dispatch<SetStateAction<boolean>>;
   cartItems: cartItemProps[];
   addItemToCart: (productToAdd: cartProductProps) => void;
+  cartCount: number;
 }
 
 export const CartContext = createContext<CartContextInterface | null>(null);
@@ -23,6 +30,12 @@ export const CartContext = createContext<CartContextInterface | null>(null);
 export const CartProvider = ({ children }) => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [cartItems, setCartItems] = useState([]);
+  const [cartCount, setCartCount] = useState(0);
+
+  useEffect(() => {
+    const count = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+    setCartCount(count);
+  }, [cartItems]);
 
   const addItemToCart = (productToAdd) => {
     const item = cartItems.find((item) => item.id === productToAdd.id);
@@ -39,7 +52,13 @@ export const CartProvider = ({ children }) => {
     }
   };
 
-  const value = { isCartOpen, setIsCartOpen, cartItems, addItemToCart };
+  const value = {
+    isCartOpen,
+    setIsCartOpen,
+    cartItems,
+    addItemToCart,
+    cartCount,
+  };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };
