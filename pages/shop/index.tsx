@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useContext } from "react";
 import { ProductsContext } from "../../contexts/products.context";
 import ProductCard from "../../components/ProductCard";
+import Navbar from "../../components/Navbar";
 
 const Page = styled.div`
   background-color: #f0f0f0;
@@ -24,7 +25,7 @@ export default function ShopIndex() {
 
   return (
     <Page>
-      navbar
+      <Navbar />
       <Container>
         <CardWrapper>
           {products.map((product) => (

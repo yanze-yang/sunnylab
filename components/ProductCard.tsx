@@ -1,22 +1,29 @@
-import React from "react";
+import React, { useContext } from "react";
+import { CartContext } from "../contexts/cart.context";
 
-type ProductCardProps = {
-  product: {
-    name: string;
-    imageUrl: string;
-    price: number;
-  };
+type ProductProps = {
+  id: number;
+  name: string;
+  imageUrl: string;
+  price: number;
 };
 
-export default function ProductCard({
-  product: { name, imageUrl, price },
-}: ProductCardProps) {
+type ProductCardProps = {
+  product: ProductProps;
+};
+
+export default function ProductCard({ product }: ProductCardProps) {
+  const { name, imageUrl, price } = product;
+  const { addItemToCart } = useContext(CartContext);
+  // pass product as an argument with id
+  const addItemToCartHandler = () => addItemToCart(product);
+
   return (
     <div>
       <h1>{name}</h1>
       <img src={imageUrl} alt={name} />
       <p>{price}</p>
-      <button>add to cart</button>
+      <button onClick={addItemToCartHandler}>add to cart</button>
     </div>
   );
 }
