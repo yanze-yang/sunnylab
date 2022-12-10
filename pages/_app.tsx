@@ -9,6 +9,8 @@ const theme: DefaultTheme = {
   colors: {
     primary: "#111",
     secondary: "#0070f3",
+    tertiary: "#4579ac",
+    grey: "#F3F3F3",
   },
   fonts: {
     monument: "Monument Extended",

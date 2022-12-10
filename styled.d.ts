@@ -5,9 +5,12 @@ declare module 'styled-components' {
     colors: {
       primary: string
       secondary: string
+      tertiary: string
+      grey: string
     }
     fonts: {
       monument:string
     }
+
   }
 }

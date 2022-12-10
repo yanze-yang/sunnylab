@@ -34,6 +34,13 @@ const CartIcon = styled.div`
 const MunueItems = styled.div`
   display: flex;
   gap: 2rem;
+
+  & > div {
+    :hover {
+      color: ${({ theme }) => theme.colors.secondary};
+    }
+  }
+
   @media screen and (max-width: 768px) {
     display: none;
   }
@@ -48,6 +55,7 @@ const MunueItemsMobile = styled.div`
   font-family: ${({ theme }) => theme.fonts.monument};
   color: ${({ theme }) => theme.colors.primary};
   cursor: pointer;
+  margin-bottom: 1rem;
 
   & > div {
     :hover {
@@ -70,12 +78,6 @@ const Menu = styled.div`
   font-family: ${({ theme }) => theme.fonts.monument};
   color: ${({ theme }) => theme.colors.primary};
   cursor: pointer;
-
-  & > div {
-    :hover {
-      color: ${({ theme }) => theme.colors.secondary};
-    }
-  }
 `;
 
 const Navbar = () => {
