@@ -6,5 +6,8 @@ declare module 'styled-components' {
       primary: string
       secondary: string
     }
+    fonts: {
+      monument:string
+    }
   }
 }

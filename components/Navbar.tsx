@@ -6,13 +6,14 @@ const StyledNavbar = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
+  padding: 2rem 2rem;
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 `;
 const StyledLogo = styled.div`
   font-size: 1.5rem;
-  font-weight: 700;
+  font-weight: normal;
+  font-family: ${({ theme }) => theme.fonts.monument};
 `;
 const StyledCart = styled.div`
   display: flex;
@@ -32,8 +33,11 @@ const Navbar = () => {
     React.useContext(CartContext);
   return (
     <StyledNavbar>
-      <StyledLogo>Logo</StyledLogo>
+      <StyledLogo>SunnyLab</StyledLogo>
       <StyledCart onClick={() => setIsCartOpen(!isCartOpen)}>
+        <div>Marc</div>
+        <div>2</div>
+        <div>3</div>
         <StyledCartIcon>
           <i
             className="fas fa-shopping-cart"
