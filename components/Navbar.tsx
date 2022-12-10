@@ -91,7 +91,6 @@ const Navbar = () => {
             <div>contact us</div>
             <div>About</div>
           </MunueItems>
-
           <CartIcon onClick={() => setIsCartOpen(!isCartOpen)}>
             <i>🛒</i>
             <span>{cartCount}</span>
