@@ -6,62 +6,105 @@ const StyledNavbar = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem 2rem;
+  padding: 1.3rem 2rem;
   background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 `;
-const StyledLogo = styled.div`
+
+const Logo = styled.div`
   font-size: 1.5rem;
   font-weight: normal;
   font-family: ${({ theme }) => theme.fonts.monument};
 `;
-const StyledCart = styled.div`
+
+const CartIcon = styled.div`
+  font-size: 1.2rem;
+  display: flex;
+  gap: 0.5rem;
+
+  background-color: #efefef;
+  padding: 0.5rem;
+  border-radius: 1rem;
+
+  :hover {
+    background-color: #dfdfdf;
+  }
+`;
+
+// menu items
+const MunueItems = styled.div`
+  display: flex;
+  gap: 2rem;
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+`;
+
+const MunueItemsMobile = styled.div`
+  display: flex;
+  gap: 1.4rem;
+  flex-direction: row;
+  justify-content: center;
+  font-size: clamp(0.8rem, 1.5vw, 1rem);
+  font-family: ${({ theme }) => theme.fonts.monument};
+  color: ${({ theme }) => theme.colors.primary};
+  cursor: pointer;
+
+  & > div {
+    :hover {
+      color: ${({ theme }) => theme.colors.secondary};
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+`;
+
+const Menu = styled.div`
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  text-transform: uppercase;
+  gap: 2rem;
+  font-size: 0.9rem;
+  font-family: ${({ theme }) => theme.fonts.monument};
+  color: ${({ theme }) => theme.colors.primary};
   cursor: pointer;
+
+  & > div {
+    :hover {
+      color: ${({ theme }) => theme.colors.secondary};
+    }
+  }
 `;
-const StyledCartCount = styled.div`
-  margin-left: 0.5rem;
-  font-size: 1.2rem;
-  font-weight: 700;
-`;
-const StyledCartIcon = styled.div`
-  font-size: 1.5rem;
-`;
+
 const Navbar = () => {
   const { isCartOpen, setIsCartOpen, cartCount } =
     React.useContext(CartContext);
   return (
-    <StyledNavbar>
-      <StyledLogo>SunnyLab</StyledLogo>
-      <StyledCart onClick={() => setIsCartOpen(!isCartOpen)}>
-        <div>Marc</div>
-        <div>2</div>
-        <div>3</div>
-        <StyledCartIcon>
-          <i
-            className="fas fa-shopping-cart"
-            onClick={() => setIsCartOpen(!isCartOpen)}
-          >
-            🛒
-          </i>
-        </StyledCartIcon>
-        <StyledCartCount>{cartCount}</StyledCartCount>
+    <>
+      <StyledNavbar>
+        <Logo>SunnyLab</Logo>
+        <Menu>
+          <MunueItems>
+            <div>All Macarons</div>
+            <div>contact us</div>
+            <div>About</div>
+          </MunueItems>
+
+          <CartIcon onClick={() => setIsCartOpen(!isCartOpen)}>
+            <i>🛒</i>
+            <span>{cartCount}</span>
+          </CartIcon>
+        </Menu>
         {isCartOpen ? <Cart /> : null}
-      </StyledCart>
-    </StyledNavbar>
+      </StyledNavbar>
+      <MunueItemsMobile>
+        <div>All Macarons</div>
+        <div>contact us</div>
+        <div>About</div>
+      </MunueItemsMobile>
+    </>
   );
 };
 export default Navbar;
-
-// export default function Navbar() {
-//   const { isCartOpen, setIsCartOpen } = React.useContext(CartContext);
-//   return (
-//     <div>
-//       <div>
-//         {isCartOpen ? <Cart /> : null}
-//         <button onClick={() => setIsCartOpen(!isCartOpen)}>close</button>
-//       </div>
-//     </div>
-//   );
-// }

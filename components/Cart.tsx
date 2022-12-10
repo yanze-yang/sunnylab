@@ -2,14 +2,17 @@ import React, { useContext } from "react";
 import { CartContext } from "../contexts/cart.context";
 
 export default function Cart() {
-  const { cartItems, cartCount } = useContext(CartContext);
+  const { cartItems, isCartOpen, setIsCartOpen } = useContext(CartContext);
   return (
     <div
       style={{
         position: "absolute",
-        top: "20px",
-        right: "100px",
-        backgroundColor: "#efefef",
+        top: "0",
+        right: "0",
+        width: "300px",
+        height: "100%",
+        backgroundColor: "#c7c7c7",
+        zIndex: 100,
       }}
     >
       {cartItems.map((item) => (
@@ -19,6 +22,7 @@ export default function Cart() {
           <p>{item.quantity}</p>
         </div>
       ))}
+      <h2 onClick={() => setIsCartOpen(!isCartOpen)}>Close</h2>
     </div>
   );
 }
