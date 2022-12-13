@@ -6,7 +6,9 @@
     "start": "next start"
   },
   "dependencies": {
+    "apollo-server": "^3.11.1",
     "bootstrap": "^5.2.3",
+    "graphql": "^16.6.0",
     "next": "latest",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
