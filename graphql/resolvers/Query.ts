@@ -2,6 +2,24 @@ export const Query = {
   hello: () => "Hello World!",
   products: (_, { filter }, { products, reviews }) => {
     const { onSale, avgRating } = filter;
+
+    if (onSale && avgRating) {
+      const filteredProducts = products.filter(
+        (product) => product.onSale === onSale
+      );
+
+      const filteredProducts2 = filteredProducts.filter((product) => {
+        const productReviews = reviews.filter(
+          (review) => review.productId === product.id
+        );
+        const productAvgRating =
+          productReviews.reduce((acc, review) => acc + review.rating, 0) /
+          productReviews.length;
+        return productAvgRating >= avgRating;
+      });
+      return filteredProducts2;
+    }
+
     if (onSale) {
       const filteredProducts = products.filter(
         (product) => product.onSale === onSale
@@ -21,23 +39,6 @@ export const Query = {
       });
 
       return filteredProducts;
-    }
-
-    if (onSale && avgRating) {
-      const filteredProducts = products.filter(
-        (product) => product.onSale === onSale
-      );
-      console.log("first", filteredProducts);
-      const filteredProducts2 = filteredProducts.filter((product) => {
-        const productReviews = reviews.filter(
-          (review) => review.productId === product.id
-        );
-        const productAvgRating =
-          productReviews.reduce((acc, review) => acc + review.rating, 0) /
-          productReviews.length;
-        return productAvgRating >= avgRating;
-      });
-      return filteredProducts2;
     }
 
     return products.filter((product) => product.onSale === onSale);
