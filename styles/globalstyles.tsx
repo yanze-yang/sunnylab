@@ -1,5 +1,4 @@
 import { createGlobalStyle } from "styled-components";
-// import "bootstrap/dist/css/bootstrap.css";
 
 const GlobalStyle = createGlobalStyle`
   html,
@@ -20,10 +19,10 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
-@font-face {
-  font-family: "Monument Extended";
-  src: url("/fonts/MonumentExtended-Regular.woff2") format("woff2"),
-}
+  @font-face {
+    font-family: "Monument Extended";
+    src: url("/fonts/MonumentExtended-Regular.woff2") format("woff2"),
+  }
 
 `;
 
