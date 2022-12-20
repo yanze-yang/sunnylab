@@ -21,7 +21,7 @@ const IntroWrapper = styled.div`
 
   @media screen and (min-width: 768px) {
     display: grid;
-    grid-template-columns: 3fr 2fr;
+    grid-template-columns: 1.2fr 1fr;
     align-items: center;
     text-align: left;
   }
