@@ -3,8 +3,13 @@ import styled from "styled-components";
 
 const Section = styled.section`
   background-color: #fff;
-  padding: 0rem 2rem;
+  padding: 0rem 1.5rem;
   height: 100%;
+
+  @media screen and (min-width: 768px) {
+    padding: 0rem 2rem;
+    height: 100%;
+  }
 `;
 
 const Container = styled.div`
@@ -14,19 +19,20 @@ const Container = styled.div`
 
 const HeroWrapper = styled.div`
   padding: 3rem 2rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 1rem;
-  align-items: center;
-  justify-items: center;
-  text-align: left;
+  grid-template-columns: 1fr;
 
-  color: #4b4b4b;
-  text-transform: uppercase;
-  letter-spacing: 0.1rem;
+  @media screen and (min-width: 768px) {
+    padding: 3rem 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1rem;
+    align-items: center;
+    justify-items: center;
+    text-align: left;
 
-  @media screen and (max-width: 768px) {
-    grid-template-columns: 1fr;
+    color: #4b4b4b;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
   }
 `;
 
@@ -44,17 +50,26 @@ const Left = styled.div`
 const Right = styled.div`
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   flex-direction: column;
   gap: 2rem;
   color: #4b4b4b;
+
+  @media screen and (min-width: 768px) {
+    align-items: flex-start;
+  }
 `;
 
 const Text = styled.div`
-  line-height: 130%;
-  font-size: clamp(2.6rem, -1rem + 7.5vw, 5rem);
-  @media screen and (max-width: 768px) {
-    font-size: 5rem;
+  font-size: 3rem;
+  line-height: 110%;
+  font-size: clamp(3rem, 1.092rem + 8.142vw, 5rem);
+  text-align: center;
+
+  @media screen and (min-width: 768px) {
+    line-height: 130%;
+    font-size: clamp(2.6rem, -1rem + 7.5vw, 5rem);
+    text-align: left;
   }
 `;
 
@@ -68,17 +83,14 @@ const Button = styled.div`
 `;
 
 const Bottom = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  align-items: baseline;
-  gap: 2rem;
-  margin-top: 1rem;
-  font-size: 8rem; // 1820 px
-  font-size: 3.3rem; // 768px
-  // font size clamp 3.3rem in 768px to 8rem in 1820px
-  font-size: clamp(3.3rem, -0.131rem + 7.148vw, 8rem);
   font-family: ${({ theme }) => theme.fonts.monument};
-
+  font-size: clamp(2.5rem, 0.115rem + 10.178vw, 5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 0.3rem;
+  margin-top: 1rem;
   & :first-child {
     font-size: 0.7em;
   }
@@ -87,13 +99,16 @@ const Bottom = styled.div`
     text-transform: uppercase;
   }
 
-  @media screen and (max-width: 768px) {
-    font-size: 5rem;
+  @media screen and (min-width: 768px) {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-end;
-    gap: 0.3rem;
+    margin-top: 1rem;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 2rem;
+    align-items: baseline;
+
+    // font size clamp 3.3rem in 768px to 8rem in 1820px
+    font-size: clamp(3.3rem, -0.273rem + 7.273vw, 8rem);
   }
 `;
 
