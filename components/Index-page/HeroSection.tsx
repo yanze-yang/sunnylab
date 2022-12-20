@@ -5,6 +5,7 @@ const Section = styled.section`
   background-color: #fff;
   padding: 0rem 1.5rem;
   height: 100%;
+
   @media screen and (min-width: 768px) {
     padding: 5rem 2rem;
     height: 100vh;

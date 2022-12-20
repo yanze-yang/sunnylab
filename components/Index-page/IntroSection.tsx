@@ -6,10 +6,9 @@ const Section = styled.section`
   padding: 0rem 1.5rem;
   height: 100%;
   display: flex;
-  justify-content: center;
+  align-items: center;
 
   @media screen and (min-width: 768px) {
-    /* padding: 0rem 2rem; */
     height: 100vh;
   }
 `;
