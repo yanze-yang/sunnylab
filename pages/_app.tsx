@@ -2,7 +2,6 @@ import type { AppProps } from "next/app";
 import { ThemeProvider, DefaultTheme } from "styled-components";
 import "../styles/globals.css";
 import GlobalStyle from "../styles/globalstyles";
-import "bootstrap/dist/css/bootstrap.css";
 import { CartProvider } from "../contexts/cart.context";
 import { ProductsProvider } from "../contexts/products.context";
 

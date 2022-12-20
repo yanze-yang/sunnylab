@@ -8,7 +8,6 @@
   "dependencies": {
     "apollo-server": "^3.11.1",
     "apollo-server-micro": "^3.11.1",
-    "bootstrap": "^5.2.3",
     "flowbite": "^1.5.5",
     "flowbite-react": "^0.3.7",
     "graphql": "^16.6.0",
