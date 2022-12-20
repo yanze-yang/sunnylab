@@ -3,11 +3,22 @@ import { gql } from "apollo-server-express";
 export const typeDefs = gql`
   type Query {
     hello: String
-    products(filter: ProductInput): [Product!]!
+    products(filter: ProductFilterInput): [Product!]!
     product(id: ID!): Product
     categories: [Category!]!
     category(id: ID!): Category
     review(id: ID!): Review
+  }
+
+  type Mutation {
+    createProduct(input: AddProductInput!): Product!
+    createCategory(input: AddCategoryInput): Category!
+    createReview(
+      title: String!
+      rating: Int!
+      comment: String!
+      productId: ID!
+    ): Review!
   }
 
   type Product {
@@ -25,7 +36,7 @@ export const typeDefs = gql`
   type Category {
     id: ID!
     name: String!
-    products(filter: ProductInput): [Product!]!
+    products(filter: ProductFilterInput): [Product!]!
   }
 
   type Review {
@@ -36,8 +47,30 @@ export const typeDefs = gql`
     comment: String!
   }
 
-  input ProductInput {
+  input ProductFilterInput {
     onSale: Boolean
     avgRating: Int
+  }
+
+  input AddCategoryInput {
+    name: String!
+  }
+
+  input AddProductInput {
+    name: String!
+    # price: Float!
+    # image: String!
+    # description: String!
+    # quantity: Int!
+    # onSale: Boolean!
+    categoryId: String!
+  }
+
+  interface Book {
+    title: String
+  }
+
+  type ChildBook implements Book {
+    description: String
   }
 `;
