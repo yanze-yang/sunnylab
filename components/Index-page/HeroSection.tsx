@@ -5,10 +5,9 @@ const Section = styled.section`
   background-color: #fff;
   padding: 0rem 1.5rem;
   height: 100%;
-
   @media screen and (min-width: 768px) {
-    padding: 0rem 2rem;
-    height: 100%;
+    padding: 5rem 2rem;
+    height: 100vh;
   }
 `;
 
@@ -18,15 +17,17 @@ const Container = styled.div`
 `;
 
 const HeroWrapper = styled.div`
+  display: grid;
   padding: 3rem 2rem;
   grid-template-columns: 1fr;
 
   @media screen and (min-width: 768px) {
     padding: 3rem 2rem;
-    display: grid;
+    height: 70vh;
+
     grid-template-columns: 1fr 1fr;
     grid-gap: 1rem;
-    align-items: center;
+
     justify-items: center;
     text-align: left;
 
@@ -115,7 +116,6 @@ const Bottom = styled.div`
 export default function HeroSection() {
   return (
     <Section>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
       <Container>
         <HeroWrapper>
           <Left>

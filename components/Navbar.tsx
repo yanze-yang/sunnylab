@@ -3,11 +3,17 @@ import { CartContext } from "../contexts/cart.context";
 import Cart from "./Cart";
 import styled from "styled-components";
 const StyledNavbar = styled.div`
+  position: fixed;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1.3rem 2rem;
   background-color: #fff;
+
+  @media screen and (min-width: 768px) {
+    background-color: unset;
+  }
 `;
 
 const Logo = styled.div`
