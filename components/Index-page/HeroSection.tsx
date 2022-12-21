@@ -5,22 +5,22 @@ const Section = styled.section`
   background-color: #fff;
   padding: 0rem 1.5rem;
   height: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.4rem;
 
   @media screen and (min-width: 768px) {
     padding: 5rem 2rem;
     height: 100vh;
   }
 `;
-
-const Container = styled.div`
+const HeroWrapper = styled.div`
   background-color: ${(props) => props.theme.colors.grey};
   margin: 0 auto;
-`;
-
-const HeroWrapper = styled.div`
   display: grid;
-  padding: 3rem 2rem;
+  padding: 5rem 2rem;
   grid-template-columns: 1fr;
+  gap: 3rem;
 
   @media screen and (min-width: 768px) {
     padding: 3rem 2rem;
@@ -45,7 +45,7 @@ const Left = styled.div`
   flex-direction: column;
 
   img {
-    width: 60%;
+    width: calc(16rem + 10vw);
   }
 `;
 
@@ -92,7 +92,6 @@ const Bottom = styled.div`
   justify-content: center;
   align-items: flex-end;
   gap: 0.3rem;
-  margin-top: 1rem;
   & :first-child {
     font-size: 0.7em;
   }
@@ -103,7 +102,6 @@ const Bottom = styled.div`
 
   @media screen and (min-width: 768px) {
     display: flex;
-    margin-top: 1rem;
     flex-direction: row;
     justify-content: flex-end;
     gap: 2rem;
@@ -117,18 +115,16 @@ const Bottom = styled.div`
 export default function HeroSection() {
   return (
     <Section>
-      <Container>
-        <HeroWrapper>
-          <Left>
-            <img src="/hero-image.png" alt="hero" />
-            <img src="/shadow.svg" alt="shodow" />
-          </Left>
-          <Right>
-            <Text>Strawberry Banana Chocolate</Text>
-            <Button>Order Now {">"}</Button>
-          </Right>
-        </HeroWrapper>
-      </Container>
+      <HeroWrapper>
+        <Left>
+          <img src="/hero-image.png" alt="hero" />
+          <img src="/shadow.svg" alt="shodow" />
+        </Left>
+        <Right>
+          <Text>Strawberry Banana Chocolate</Text>
+          <Button>Order Now {">"}</Button>
+        </Right>
+      </HeroWrapper>
       <Bottom>
         <div>Designer</div>
         <div>Macarons</div>
