@@ -17,12 +17,12 @@ const Image = styled.div`
   width: 100%;
   height: 100%;
   object-fit: cover;
-  padding: 2rem;
+  padding: 1.2rem 2rem;
   border-bottom: 2px #000 solid;
 `;
 
 const Content = styled.div`
-  padding: 2rem 2rem 1.2rem 2rem;
+  padding: 1.2rem 2rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
