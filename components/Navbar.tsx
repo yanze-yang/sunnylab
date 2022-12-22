@@ -1,7 +1,8 @@
 import React, { useRef } from "react";
 import { CartContext } from "../contexts/cart.context";
 import styled from "styled-components";
-import Draw from "./Draw";
+import Draw from "./cart/Draw";
+import CartIcon from "./cart/CartIcon";
 const StyledNavbar = styled.div`
   width: 100%;
   display: flex;
@@ -22,7 +23,7 @@ const Logo = styled.div`
 const MunueItems = styled.div`
   display: flex;
   gap: 2rem;
-  margin-right: 4.2rem;
+  margin-right: 5rem;
 
   & > div {
     :hover {
@@ -32,24 +33,6 @@ const MunueItems = styled.div`
 
   @media screen and (max-width: 768px) {
     display: none;
-  }
-`;
-
-const CartIcon = styled.div`
-  position: fixed;
-  right: 1rem;
-  z-index: 20;
-
-  font-size: 1.2rem;
-  display: flex;
-  gap: 0.5rem;
-
-  background-color: #efefef;
-  padding: 0.5rem;
-  border-radius: 1rem;
-
-  :hover {
-    background-color: #dfdfdf;
   }
 `;
 
@@ -88,10 +71,8 @@ const Menu = styled.div`
 `;
 
 const Navbar = () => {
-  const { isCartOpen, setIsCartOpen, cartCount } =
-    React.useContext(CartContext);
+  const { isCartOpen } = React.useContext(CartContext);
 
-  const DrawRef = useRef();
   return (
     <>
       {isCartOpen ? <Draw /> : null}
@@ -103,10 +84,7 @@ const Navbar = () => {
             <div>contact us</div>
             <div>About</div>
           </MunueItems>
-          <CartIcon onClick={() => setIsCartOpen(!isCartOpen)}>
-            <i>🛒</i>
-            <span>{cartCount}</span>
-          </CartIcon>
+          <CartIcon />
         </Menu>
       </StyledNavbar>
       <MunueItemsMobile>

@@ -7,7 +7,7 @@ import {
 } from "react";
 
 type cartProductProps = {
-  id: number;
+  id: number | string;
   name: string;
   price: number;
 };

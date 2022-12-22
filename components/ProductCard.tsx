@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { BiPlus, BiMinus } from "react-icons/bi";
+import { CartContext } from "../contexts/cart.context";
 
 type CardProps = {
   product: {
@@ -97,9 +98,12 @@ const AddToCartButtonGroup = styled.div`
   }
 `;
 
-export default function Card({
-  product: { name, description, price, imageUrl },
-}: CardProps) {
+export default function Card({ product }: CardProps) {
+  const { name, description, price, imageUrl } = product;
+  const { addItemToCart } = useContext(CartContext);
+  // pass product as an argument with id
+  const addItemToCartHandler = () => addItemToCart(product);
+
   return (
     <>
       <CardWrapper>
@@ -118,7 +122,7 @@ export default function Card({
               <AddToCartButtonGroup>
                 <BiMinus />
                 <input defaultValue={2} />
-                <BiPlus />
+                <BiPlus onClick={() => addItemToCartHandler()} />
               </AddToCartButtonGroup>
             </ProductAddToCart>
           </Content>
