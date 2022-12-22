@@ -1,11 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import { BiPlus, BiMinus } from "react-icons/bi";
 import { CartContext } from "../contexts/cart.context";
 
 type CardProps = {
   product: {
-    id: string;
+    id: string | number;
     name: string;
     description: string;
     price: number;
@@ -72,7 +72,7 @@ const Price = styled.div`
     font-size: 0.8rem;
     // the span move up a little bit
     position: relative;
-    top: -0.2rem;
+    top: -0.3rem;
     margin-right: 0.2rem;
   }
 `;
@@ -100,9 +100,21 @@ const AddToCartButtonGroup = styled.div`
 
 export default function Card({ product }: CardProps) {
   const { name, description, price, imageUrl } = product;
-  const { addItemToCart } = useContext(CartContext);
+  const { addItemToCart, removeItemFromCart, quantityInCart } =
+    useContext(CartContext);
   // pass product as an argument with id
-  const addItemToCartHandler = () => addItemToCart(product);
+  const addItemToCartHandler = () => {
+    setQuantity(quantity + 1);
+    addItemToCart(product);
+  };
+
+  const removeItemFromCartHandler = () => {
+    if (quantity === 0) return;
+    setQuantity(quantity - 1);
+    removeItemFromCart(product);
+  };
+
+  const [quantity, setQuantity] = useState(0);
 
   return (
     <>
@@ -120,9 +132,17 @@ export default function Card({ product }: CardProps) {
                 {price}
               </Price>
               <AddToCartButtonGroup>
-                <BiMinus />
-                <input defaultValue={2} />
-                <BiPlus onClick={() => addItemToCartHandler()} />
+                <BiMinus
+                  onClick={() => {
+                    removeItemFromCartHandler();
+                  }}
+                />
+                <input value={quantity} />
+                <BiPlus
+                  onClick={() => {
+                    addItemToCartHandler();
+                  }}
+                />
               </AddToCartButtonGroup>
             </ProductAddToCart>
           </Content>

@@ -10,6 +10,8 @@ type cartProductProps = {
   id: number | string;
   name: string;
   price: number;
+  description: string;
+  imageUrl: string;
 };
 
 // union type
@@ -22,6 +24,9 @@ interface CartContextInterface {
   setIsCartOpen: Dispatch<SetStateAction<boolean>>;
   cartItems: cartItemProps[];
   addItemToCart: (productToAdd: cartProductProps) => void;
+  removeItemFromCart: (productToRemove: cartProductProps) => void;
+  removeAllItemsFromCart: (productToRemove: cartProductProps) => void;
+  quantityInCart: (product: cartProductProps) => number;
   cartCount: number;
 }
 
@@ -52,11 +57,42 @@ export const CartProvider = ({ children }) => {
     }
   };
 
+  const removeItemFromCart = (productToRemove) => {
+    const item = cartItems.find((item) => item.id === productToRemove.id);
+    if (item.quantity === 1) {
+      setCartItems(cartItems.filter((item) => item.id !== productToRemove.id));
+    } else {
+      setCartItems(
+        cartItems.map((item) =>
+          item.id === productToRemove.id
+            ? { ...item, quantity: item.quantity - 1 }
+            : item
+        )
+      );
+    }
+  };
+
+  const removeAllItemsFromCart = (productToRemove) => {
+    setCartItems(
+      cartItems.filter((item) =>
+        item.id !== productToRemove.id ? { ...item, quanlitity: 0 } : item
+      )
+    );
+  };
+
+  const quantityInCart = (product) => {
+    const item = cartItems.find((item) => item.id === product.id);
+    return item ? item.quantity : 0;
+  };
+
   const value = {
     isCartOpen,
     setIsCartOpen,
     cartItems,
     addItemToCart,
+    removeItemFromCart,
+    removeAllItemsFromCart,
+    quantityInCart,
     cartCount,
   };
 

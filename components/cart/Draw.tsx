@@ -3,7 +3,12 @@ import { CartContext } from "../../contexts/cart.context";
 import CartIcon from "./CartIcon";
 
 export default function Draw() {
-  const { cartItems, isCartOpen, setIsCartOpen } = useContext(CartContext);
+  const { cartItems, isCartOpen, setIsCartOpen, removeAllItemsFromCart } =
+    useContext(CartContext);
+
+  const removeAllItemsFromCartHandler = (productToRemove) => {
+    removeAllItemsFromCart(productToRemove);
+  };
   return (
     <>
       <div
@@ -36,24 +41,17 @@ export default function Draw() {
           <span className="sr-only">Close menu</span>
         </button>
         <p className="mb-6 text-sm text-gray-500 dark:text-gray-400 mt-20">
-          Supercharge your hiring by taking advantage of our{" "}
-          <a
-            href="#"
-            className="text-blue-600 underline dark:text-blue-500 hover:no-underline"
-          >
-            limited-time sale
-          </a>{" "}
-          for Flowbite Docs + Job Board. Unlimited access to over 190K
-          top-ranked candidates and the #1 design job board.
+          Ready to indulge in some delicious macarons? Click on the 'Checkout'
+          button and we'll take care of the rest.
         </p>
-        <div className="mt-20">
+        <div>
           {cartItems.map((item) => {
             return (
               <div className="flex items-center justify-between mb-4  ">
                 <div className="flex items-center">
                   <img
                     className="w-16 h-16 mr-4 rounded-lg"
-                    src={item.imageURL}
+                    src={item.imageUrl}
                     alt=""
                   />
                   <div>
@@ -72,6 +70,7 @@ export default function Draw() {
                   <button
                     type="button"
                     className="ml-4 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                    onClick={() => removeAllItemsFromCart(item)}
                   >
                     <svg
                       aria-hidden="true"
