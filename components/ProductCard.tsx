@@ -2,6 +2,16 @@ import React from "react";
 import styled from "styled-components";
 import { BiPlus, BiMinus } from "react-icons/bi";
 
+type CardProps = {
+  product: {
+    id: string;
+    name: string;
+    description: string;
+    price: number;
+    imageUrl: string;
+  };
+};
+
 const CardWrapper = styled.div`
   border: 2px #000000 solid;
   max-width: 20rem;
@@ -87,23 +97,23 @@ const AddToCartButtonGroup = styled.div`
   }
 `;
 
-export default function Card() {
+export default function Card({
+  product: { name, description, price, imageUrl },
+}: CardProps) {
   return (
     <>
       <CardWrapper>
         <CardGrid>
           <Image>
-            <img src="/hero-image.png" alt="" />
+            <img src={imageUrl} alt="" />
           </Image>
           <Content>
-            <ProductName>Strawberry Banana Chocolate</ProductName>
-            <ProductDescription>
-              Filled with half strawberry cream and jam, half banana cream and
-              chocolate Ganache.
-            </ProductDescription>
+            <ProductName>{name}</ProductName>
+            <ProductDescription>{description}</ProductDescription>
             <ProductAddToCart>
               <Price>
-                <span>$</span>4.5
+                <span>$</span>
+                {price}
               </Price>
               <AddToCartButtonGroup>
                 <BiMinus />

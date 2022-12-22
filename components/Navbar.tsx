@@ -103,8 +103,6 @@ const Navbar = () => {
             <div>contact us</div>
             <div>About</div>
           </MunueItems>
-          // create code when click other place, the cart will close
-          automatically
           <CartIcon onClick={() => setIsCartOpen(!isCartOpen)}>
             <i>🛒</i>
             <span>{cartCount}</span>

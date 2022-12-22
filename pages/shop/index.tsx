@@ -48,13 +48,6 @@ const Container = styled.div`
   }
 `;
 
-const CardWrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  gap: 2rem;
-`;
-
 export default function ShopIndex() {
   const { products } = useContext(ProductsContext);
 
@@ -64,7 +57,7 @@ export default function ShopIndex() {
       <PageTitle>All Macarons are tailored to your taste & style.</PageTitle>
       <Container>
         {products.map((product) => (
-          <ProductCard key={product.id} />
+          <ProductCard key={product.id} product={product} />
         ))}
       </Container>
     </>

@@ -2,36 +2,42 @@
   {
     "id": 1,
     "name": "product 1",
-    "imageUrl": "http://via.placeholder.com/300",
+    "description": "Filled with half strawberry cream and jam, half banana cream and chocolate Ganache. 1",
+    "imageUrl": "hero-image.png",
     "price": 100
   },
   {
     "id": 2,
     "name": "product 2",
+    "description": "Filled with half strawberry cream and jam, half banana cream and chocolate Ganache. 2",
     "imageUrl": "http://via.placeholder.com/300",
     "price": 200
   },
   {
     "id": 3,
     "name": "product 3",
+    "description": "Filled with half strawberry cream and jam, half banana cream and chocolate Ganache. 3",
     "imageUrl": "http://via.placeholder.com/300",
     "price": 300
   },
   {
     "id": 4,
     "name": "product 4",
+    "description": "Filled with half strawberry cream and jam, half banana cream and chocolate Ganache. 4",
     "imageUrl": "http://via.placeholder.com/300",
     "price": 400
   },
   {
     "id": 5,
     "name": "product 5",
+    "description": "Filled with half strawberry cream and jam, half banana cream and chocolate Ganache. 5",
     "imageUrl": "http://via.placeholder.com/300",
     "price": 500
   },
   {
     "id": 6,
     "name": "product 6",
+    "description": "Filled with half strawberry cream and jam, half banana cream and chocolate Ganache. 6",
     "imageUrl": "http://via.placeholder.com/300",
     "price": 600
   }
