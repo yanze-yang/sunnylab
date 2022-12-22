@@ -8,10 +8,12 @@ const Section = styled.section`
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.4rem;
+  margin-top: 4rem;
 
   @media screen and (min-width: 768px) {
     padding: 5rem 2rem;
     height: 100vh;
+    margin-top: 4rem;
   }
 `;
 const HeroWrapper = styled.div`

@@ -5,14 +5,26 @@ import { ProductsContext } from "../../contexts/products.context";
 import ProductCard from "../../components/ProductCard";
 import Navbar from "../../components/Navbar";
 
-const Page = styled.div`
-  background-color: #f0f0f0;
+const PageTitle = styled.div`
+  max-width: 1280px;
+  margin-top: 4rem;
+  margin: 4rem auto 0 auto;
+  padding: 5rem;
+  font-size: 1.4rem;
+  font-weight: normal;
+  font-family: ${({ theme }) => theme.fonts.monument};
+
+  @media screen and (min-width: 768px) {
+    font-size: 2rem;
+  }
+
+  @media screen and (min-width: 1280px) {
+    font-size: 4rem;
+  }
 `;
 
 const Container = styled.div`
   position: relative;
-  top: 6rem;
-  padding: 2rem;
   max-width: 1280px;
   /* background-color: #f0f0f0; */
   display: grid;
@@ -50,6 +62,7 @@ export default function ShopIndex() {
   return (
     <>
       <Navbar />
+      <PageTitle>All Macarons are tailored to your taste & style.</PageTitle>
       <Container>
         {products.map((product) => (
           <ProductCard key={product.id} />

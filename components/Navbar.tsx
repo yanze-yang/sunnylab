@@ -3,6 +3,7 @@ import { CartContext } from "../contexts/cart.context";
 import Cart from "./Cart";
 import styled from "styled-components";
 const StyledNavbar = styled.div`
+  /* margin-top: -4rem; */
   position: fixed;
   width: 100%;
   display: flex;
@@ -10,9 +11,11 @@ const StyledNavbar = styled.div`
   align-items: center;
   padding: 1.3rem 2rem;
   background-color: #fff;
+  z-index: 9999;
 
   @media screen and (min-width: 768px) {
-    background-color: unset;
+    background-color: #fff;
+    margin-top: -4rem;
   }
 `;
 
