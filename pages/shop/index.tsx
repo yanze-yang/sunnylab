@@ -7,15 +7,14 @@ import Navbar from "../../components/Navbar";
 
 const PageTitle = styled.div`
   max-width: 1280px;
-  margin-top: 4rem;
-  margin: 4rem auto 0 auto;
-  padding: 5rem;
-  font-size: 1.4rem;
+  margin: 0 auto;
+  padding: 3rem;
+  font-size: 1.5rem;
   font-weight: normal;
   font-family: ${({ theme }) => theme.fonts.monument};
 
   @media screen and (min-width: 768px) {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
 
   @media screen and (min-width: 1280px) {

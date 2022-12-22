@@ -3,8 +3,6 @@ import { CartContext } from "../contexts/cart.context";
 import Cart from "./Cart";
 import styled from "styled-components";
 const StyledNavbar = styled.div`
-  margin-top: -4rem;
-  position: fixed;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -12,11 +10,6 @@ const StyledNavbar = styled.div`
   padding: 1.3rem 2rem;
   background-color: #fff;
   z-index: 20;
-
-  @media screen and (min-width: 768px) {
-    background-color: #fff;
-    margin-top: -4rem;
-  }
 `;
 
 const Logo = styled.div`
@@ -25,7 +18,28 @@ const Logo = styled.div`
   font-family: ${({ theme }) => theme.fonts.monument};
 `;
 
+// menu items
+const MunueItems = styled.div`
+  display: flex;
+  gap: 2rem;
+  margin-right: 4.2rem;
+
+  & > div {
+    :hover {
+      color: ${({ theme }) => theme.colors.secondary};
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+`;
+
 const CartIcon = styled.div`
+  position: fixed;
+  right: 1rem;
+  z-index: 30;
+
   font-size: 1.2rem;
   display: flex;
   gap: 0.5rem;
@@ -36,22 +50,6 @@ const CartIcon = styled.div`
 
   :hover {
     background-color: #dfdfdf;
-  }
-`;
-
-// menu items
-const MunueItems = styled.div`
-  display: flex;
-  gap: 2rem;
-
-  & > div {
-    :hover {
-      color: ${({ theme }) => theme.colors.secondary};
-    }
-  }
-
-  @media screen and (max-width: 768px) {
-    display: none;
   }
 `;
 
@@ -114,6 +112,10 @@ const Navbar = () => {
         <div>contact us</div>
         <div>About</div>
       </MunueItemsMobile>
+      {/* <CartIcon onClick={() => setIsCartOpen(!isCartOpen)}>
+        <i>🛒</i>
+        <span>{cartCount}</span>
+      </CartIcon> */}
     </>
   );
 };
