@@ -2,6 +2,7 @@ import Head from "next/head";
 import Navbar from "../components/Navbar";
 import HeroSection from "../components/Index-page/HeroSection";
 import { IntroSection } from "../components/Index-page/IntroSection";
+import Draw from "../components/Draw";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       </Head>
       <main>
         <Navbar />
+        <Draw />
         <HeroSection />
         <IntroSection />
       </main>
