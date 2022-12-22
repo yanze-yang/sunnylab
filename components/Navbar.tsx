@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useRef } from "react";
 import { CartContext } from "../contexts/cart.context";
-import Cart from "./Cart";
 import styled from "styled-components";
+import Draw from "./Draw";
 const StyledNavbar = styled.div`
   width: 100%;
   display: flex;
@@ -9,7 +9,7 @@ const StyledNavbar = styled.div`
   align-items: center;
   padding: 1.3rem 2rem;
   background-color: #fff;
-  z-index: 20;
+  z-index: 10;
 `;
 
 const Logo = styled.div`
@@ -38,7 +38,7 @@ const MunueItems = styled.div`
 const CartIcon = styled.div`
   position: fixed;
   right: 1rem;
-  z-index: 30;
+  z-index: 20;
 
   font-size: 1.2rem;
   display: flex;
@@ -90,8 +90,11 @@ const Menu = styled.div`
 const Navbar = () => {
   const { isCartOpen, setIsCartOpen, cartCount } =
     React.useContext(CartContext);
+
+  const DrawRef = useRef();
   return (
     <>
+      {isCartOpen ? <Draw /> : null}
       <StyledNavbar>
         <Logo>SunnyLab</Logo>
         <Menu>
@@ -100,22 +103,19 @@ const Navbar = () => {
             <div>contact us</div>
             <div>About</div>
           </MunueItems>
+          // create code when click other place, the cart will close
+          automatically
           <CartIcon onClick={() => setIsCartOpen(!isCartOpen)}>
             <i>🛒</i>
             <span>{cartCount}</span>
           </CartIcon>
         </Menu>
-        {isCartOpen ? <Cart /> : null}
       </StyledNavbar>
       <MunueItemsMobile>
         <div>All Macarons</div>
         <div>contact us</div>
         <div>About</div>
       </MunueItemsMobile>
-      {/* <CartIcon onClick={() => setIsCartOpen(!isCartOpen)}>
-        <i>🛒</i>
-        <span>{cartCount}</span>
-      </CartIcon> */}
     </>
   );
 };

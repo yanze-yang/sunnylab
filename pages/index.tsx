@@ -14,7 +14,6 @@ export default function Home() {
       </Head>
       <main>
         <Navbar />
-        {/* <Draw /> */}
         <HeroSection />
         <IntroSection />
       </main>
