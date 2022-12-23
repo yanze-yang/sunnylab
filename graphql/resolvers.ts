@@ -6,8 +6,8 @@ import { Mutation } from "./resolvers/Mutation";
 
 export const resolvers = {
   Query,
-  Mutation,
-  Product,
-  Category,
-  Review,
+  // Mutation,
+  // Product,
+  // Category,
+  // Review,
 };
