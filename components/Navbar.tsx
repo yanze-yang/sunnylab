@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import { CartContext } from "../contexts/cart.context";
 import styled from "styled-components";
 import Draw from "./cart/Draw";
