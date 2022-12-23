@@ -6,9 +6,6 @@ export default function Draw() {
   const { cartItems, isCartOpen, setIsCartOpen, removeAllItemsFromCart } =
     useContext(CartContext);
 
-  const removeAllItemsFromCartHandler = (productToRemove) => {
-    removeAllItemsFromCart(productToRemove);
-  };
   return (
     <>
       <div
@@ -17,7 +14,6 @@ export default function Draw() {
         tabIndex={-1}
         aria-labelledby="drawer-label"
       >
-        {/* <CartIcon /> */}
         <button
           type="button"
           data-drawer-dismiss="drawer-example"
