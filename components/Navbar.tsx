@@ -71,6 +71,16 @@ const Menu = styled.div`
   cursor: pointer;
 `;
 
+const Links = () => {
+  return (
+    <>
+      <Link href="/shop"> All Macarons</Link>
+      <div>contact us</div>
+      <div>About</div>
+    </>
+  );
+};
+
 const Navbar = () => {
   const { isCartOpen } = React.useContext(CartContext);
 
@@ -78,20 +88,18 @@ const Navbar = () => {
     <>
       {isCartOpen ? <Draw /> : null}
       <StyledNavbar>
-        <Logo>SunnyLab</Logo>
+        <Logo>
+          <Link href="/">SunnyLab</Link>
+        </Logo>
         <Menu>
           <MunueItems>
-            <Link href="/shop"> All Macarons</Link>
-            <div>contact us</div>
-            <div>About</div>
+            <Links />
           </MunueItems>
           <CartIcon />
         </Menu>
       </StyledNavbar>
       <MunueItemsMobile>
-        <div>All Macarons</div>
-        <div>contact us</div>
-        <div>About</div>
+        <Links />
       </MunueItemsMobile>
     </>
   );

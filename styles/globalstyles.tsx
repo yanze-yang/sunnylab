@@ -18,12 +18,6 @@ const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
   }
-
-  @font-face {
-    font-family: "Monument Extended";
-    src: url("/fonts/MonumentExtended-Regular.woff2") format("woff2"),
-  }
-
 `;
 
 export default GlobalStyle;
