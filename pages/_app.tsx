@@ -4,6 +4,8 @@ import "../styles/globals.css";
 import GlobalStyle from "../styles/globalstyles";
 import { CartProvider } from "../contexts/cart.context";
 import { ProductsProvider } from "../contexts/products.context";
+import { ApolloProvider } from "@apollo/client";
+import apolloClient from "../lib/apollo";
 
 const theme: DefaultTheme = {
   colors: {
@@ -20,14 +22,16 @@ const theme: DefaultTheme = {
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
-      <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <ProductsProvider>
-          <CartProvider>
-            <Component {...pageProps} />
-          </CartProvider>
-        </ProductsProvider>
-      </ThemeProvider>
+      <ApolloProvider client={apolloClient}>
+        <ThemeProvider theme={theme}>
+          <GlobalStyle />
+          <ProductsProvider>
+            <CartProvider>
+              <Component {...pageProps} />
+            </CartProvider>
+          </ProductsProvider>
+        </ThemeProvider>
+      </ApolloProvider>
     </>
   );
 }
