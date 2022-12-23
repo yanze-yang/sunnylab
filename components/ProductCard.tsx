@@ -100,8 +100,12 @@ const AddToCartButtonGroup = styled.div`
 
 export default function Card({ product }: CardProps) {
   const { name, description, price, imageUrl } = product;
-  const { addItemToCart, removeItemFromCart, quantityInCart, cartItems } =
-    useContext(CartContext);
+  const {
+    addItemToCart,
+    removeItemFromCart,
+    quantityInCart,
+    updateItemInCart,
+  } = useContext(CartContext);
 
   const quantity = quantityInCart(product);
 
@@ -112,6 +116,21 @@ export default function Card({ product }: CardProps) {
   const removeItemFromCartHandler = () => {
     if (quantity === 0) return;
     removeItemFromCart(product);
+  };
+
+  const updateItemInCartHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+
+    // when the value is 0, disable the backspace
+
+    if (value === "0") {
+      removeItemFromCart(product);
+    }
+    if (value == "") {
+      updateItemInCart(product, 0);
+    }
+    console.log("e", value);
+    updateItemInCart(product, parseInt(value));
   };
 
   return (
@@ -135,7 +154,11 @@ export default function Card({ product }: CardProps) {
                     removeItemFromCartHandler();
                   }}
                 />
-                <input value={quantity} onChange={() => {}} />
+                <input
+                  value={quantity}
+                  type="number"
+                  onChange={(e) => updateItemInCartHandler(e)}
+                />
                 <BiPlus
                   onClick={() => {
                     addItemToCartHandler();
