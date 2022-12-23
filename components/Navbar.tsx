@@ -3,6 +3,7 @@ import { CartContext } from "../contexts/cart.context";
 import styled from "styled-components";
 import Draw from "./cart/Draw";
 import CartIcon from "./cart/CartIcon";
+import Link from "next/link";
 const StyledNavbar = styled.div`
   width: 100%;
   display: flex;
@@ -80,7 +81,7 @@ const Navbar = () => {
         <Logo>SunnyLab</Logo>
         <Menu>
           <MunueItems>
-            <div>All Macarons</div>
+            <Link href="/shop"> All Macarons</Link>
             <div>contact us</div>
             <div>About</div>
           </MunueItems>
