@@ -37,13 +37,15 @@ export default function Draw() {
           <span className="sr-only">Close menu</span>
         </button>
         <p className="mb-6 text-sm text-gray-500 dark:text-gray-400 mt-20">
-          Ready to indulge in some delicious macarons? Click on the 'Checkout'
-          button and we'll take care of the rest.
+          Ready to indulge in some delicious macarons?
         </p>
         <div>
           {cartItems.map((item) => {
             return (
-              <div className="flex items-center justify-between mb-4  ">
+              <div
+                className="flex items-center justify-between mb-4"
+                key={item.id}
+              >
                 <div className="flex items-center">
                   <img
                     className="w-16 h-16 mr-4 rounded-lg"

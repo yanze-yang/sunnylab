@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { BiPlus, BiMinus } from "react-icons/bi";
@@ -24,7 +25,7 @@ const CardGrid = styled.div`
   grid-template-columns: 1fr;
 `;
 
-const Image = styled.div`
+const ImageWrapper = styled.div`
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -128,13 +129,15 @@ export default function Card({ product }: CardProps) {
     updateItemInCart(product, parseInt(value));
   };
 
+  const x = 0;
+
   return (
     <>
       <CardWrapper>
         <CardGrid>
-          <Image>
-            <img src={imageUrl} alt="" />
-          </Image>
+          <ImageWrapper>
+            <img src={imageUrl} alt="marcaron" />
+          </ImageWrapper>
           <Content>
             <ProductName>{name}</ProductName>
             <ProductDescription>{description}</ProductDescription>
