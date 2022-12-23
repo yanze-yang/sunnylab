@@ -3,7 +3,7 @@ import { CartContext } from "../../contexts/cart.context";
 import CartIcon from "./CartIcon";
 
 export default function Draw() {
-  const { cartItems, isCartOpen, setIsCartOpen, removeAllItemsFromCart } =
+  const { cartItems, isCartOpen, setIsCartOpen, clearItemFromCart } =
     useContext(CartContext);
 
   return (
@@ -66,7 +66,7 @@ export default function Draw() {
                   <button
                     type="button"
                     className="ml-4 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                    onClick={() => removeAllItemsFromCart(item)}
+                    onClick={() => clearItemFromCart(item)}
                   >
                     <svg
                       aria-hidden="true"

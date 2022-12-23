@@ -25,7 +25,11 @@ interface CartContextInterface {
   cartItems: cartItemProps[];
   addItemToCart: (productToAdd: cartProductProps) => void;
   removeItemFromCart: (productToRemove: cartProductProps) => void;
-  removeAllItemsFromCart: (productToRemove: cartProductProps) => void;
+  clearItemFromCart: (productToRemove: cartProductProps) => void;
+  updateItemInCart: (
+    productToUpdate: cartProductProps,
+    quantity: number
+  ) => void;
   quantityInCart: (product: cartProductProps) => number;
   cartCount: number;
 }
@@ -72,14 +76,23 @@ export const CartProvider = ({ children }) => {
     }
   };
 
-  const removeAllItemsFromCart = (productToRemove) => {
-    console.log("ss");
-    setCartItems(
-      cartItems.filter((item) => {
-        item.id !== productToRemove.id ? { ...item, quantity: 0 } : item;
-        console.log("item", item.quantity);
-      })
-    );
+  const clearItemFromCart = (productToRemove) => {
+    setCartItems(cartItems.filter((item) => item.id !== productToRemove.id));
+  };
+
+  const updateItemInCart = (productToUpdate, quantity) => {
+    const item = cartItems.find((item) => item.id === productToUpdate.id);
+    if (item) {
+      setCartItems(
+        cartItems.map((item) =>
+          item.id === productToUpdate.id
+            ? { ...item, quantity: quantity }
+            : item
+        )
+      );
+    } else {
+      setCartItems([...cartItems, { ...productToUpdate, quantity: 1 }]);
+    }
   };
 
   const quantityInCart = (product: any) => {
@@ -93,8 +106,9 @@ export const CartProvider = ({ children }) => {
     cartItems,
     addItemToCart,
     removeItemFromCart,
-    removeAllItemsFromCart,
+    clearItemFromCart,
     quantityInCart,
+    updateItemInCart,
     cartCount,
   };
 
