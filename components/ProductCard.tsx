@@ -120,16 +120,11 @@ export default function Card({ product }: CardProps) {
 
   const updateItemInCartHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-
-    // when the value is 0, disable the backspace
-
-    if (value === "0") {
-      removeItemFromCart(product);
+    if (value === "" || parseInt(value) === 0) {
+      removeItemFromCartHandler();
+      return;
     }
-    if (value == "") {
-      updateItemInCart(product, 0);
-    }
-    console.log("e", value);
+
     updateItemInCart(product, parseInt(value));
   };
 
@@ -156,7 +151,6 @@ export default function Card({ product }: CardProps) {
                 />
                 <input
                   value={quantity}
-                  type="number"
                   onChange={(e) => updateItemInCartHandler(e)}
                 />
                 <BiPlus
