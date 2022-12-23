@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { BiPlus, BiMinus } from "react-icons/bi";
 import { CartContext } from "../contexts/cart.context";
@@ -100,21 +100,19 @@ const AddToCartButtonGroup = styled.div`
 
 export default function Card({ product }: CardProps) {
   const { name, description, price, imageUrl } = product;
-  const { addItemToCart, removeItemFromCart, quantityInCart } =
+  const { addItemToCart, removeItemFromCart, quantityInCart, cartItems } =
     useContext(CartContext);
-  // pass product as an argument with id
+
+  const quantity = quantityInCart(product);
+
   const addItemToCartHandler = () => {
-    setQuantity(quantity + 1);
     addItemToCart(product);
   };
 
   const removeItemFromCartHandler = () => {
     if (quantity === 0) return;
-    setQuantity(quantity - 1);
     removeItemFromCart(product);
   };
-
-  const [quantity, setQuantity] = useState(0);
 
   return (
     <>
@@ -137,7 +135,7 @@ export default function Card({ product }: CardProps) {
                     removeItemFromCartHandler();
                   }}
                 />
-                <input value={quantity} />
+                <input value={quantity} onChange={() => {}} />
                 <BiPlus
                   onClick={() => {
                     addItemToCartHandler();

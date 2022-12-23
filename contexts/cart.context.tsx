@@ -73,14 +73,16 @@ export const CartProvider = ({ children }) => {
   };
 
   const removeAllItemsFromCart = (productToRemove) => {
+    console.log("ss");
     setCartItems(
-      cartItems.filter((item) =>
-        item.id !== productToRemove.id ? { ...item, quanlitity: 0 } : item
-      )
+      cartItems.filter((item) => {
+        item.id !== productToRemove.id ? { ...item, quantity: 0 } : item;
+        console.log("item", item.quantity);
+      })
     );
   };
 
-  const quantityInCart = (product) => {
+  const quantityInCart = (product: any) => {
     const item = cartItems.find((item) => item.id === product.id);
     return item ? item.quantity : 0;
   };
