@@ -1,11 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import { useContext } from "react";
-import { ProductsContext } from "../../contexts/products.context";
-import ProductCard from "../../components/ProductCard";
-import Navbar from "../../components/Navbar";
-import { gql, useQuery } from "@apollo/client";
-import { getPageStaticInfo } from "next/dist/build/analysis/get-page-static-info";
+import { ProductsContext } from "../contexts/products.context";
+import ProductCard from "../components/ProductCard";
+import Navbar from "../components/Navbar";
 
 const PageTitle = styled.div`
   max-width: 1280px;
