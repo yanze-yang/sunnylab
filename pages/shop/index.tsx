@@ -5,6 +5,7 @@ import { ProductsContext } from "../../contexts/products.context";
 import ProductCard from "../../components/ProductCard";
 import Navbar from "../../components/Navbar";
 import { gql, useQuery } from "@apollo/client";
+import { getPageStaticInfo } from "next/dist/build/analysis/get-page-static-info";
 
 const PageTitle = styled.div`
   max-width: 1280px;
@@ -49,29 +50,17 @@ const Container = styled.div`
   }
 `;
 
-const GET_PRODUCTS = gql`
-  query Query {
-    products {
-      createdAt
-      description
-      id
-      name
-      price
-      updatedAt
-      imageUrl
-    }
-  }
-`;
+export async function getStaticProps() {
+  return {
+    props: {},
+  };
+}
 
 export default function ShopIndex() {
-  // const { products } = useContext(ProductsContext);
-
-  const { data, loading, error } = useQuery(GET_PRODUCTS);
+  const { products, loading, error } = useContext(ProductsContext);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Oh no... {error.message}</p>;
-
-  const { products } = data;
 
   return (
     <>

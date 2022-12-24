@@ -4,6 +4,8 @@ import { gql, useQuery } from "@apollo/client";
 
 export const ProductsContext = createContext({
   products: [],
+  loading: false,
+  error: null,
 });
 
 const GET_PRODUCTS = gql`
@@ -31,7 +33,7 @@ export const ProductsProvider = ({ children }) => {
     }
   }, [data]);
 
-  const value = { products };
+  const value = { products, loading, error };
   return (
     <ProductsContext.Provider value={value}>
       {children}
