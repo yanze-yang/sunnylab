@@ -62,6 +62,7 @@ export default function ShopIndex() {
       <Navbar />
       <PageTitle>All Macarons are tailored to your taste & style.</PageTitle>
       <Container>
+        <>test</>
         {products.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}

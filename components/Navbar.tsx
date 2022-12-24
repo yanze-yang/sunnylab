@@ -74,7 +74,7 @@ const Menu = styled.div`
 const Links = () => {
   return (
     <>
-      <Link href="/shop"> All Macarons</Link>
+      <Link href="/shop">All Macarons</Link>
       <div>contact us</div>
       <div>About</div>
     </>
