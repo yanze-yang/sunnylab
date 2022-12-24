@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { ProductsContext } from "../../contexts/products.context";
 import ProductCard from "../../components/ProductCard";
 import Navbar from "../../components/Navbar";
+import { gql, useQuery } from "@apollo/client";
 
 const PageTitle = styled.div`
   max-width: 1280px;
@@ -48,15 +49,35 @@ const Container = styled.div`
   }
 `;
 
+const GET_PRODUCTS = gql`
+  query Query {
+    products {
+      createdAt
+      description
+      id
+      name
+      price
+      updatedAt
+      imageUrl
+    }
+  }
+`;
+
 export default function ShopIndex() {
-  const { products } = useContext(ProductsContext);
+  // const { products } = useContext(ProductsContext);
+
+  const { data, loading, error } = useQuery(GET_PRODUCTS);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Oh no... {error.message}</p>;
+
+  const { products } = data;
 
   return (
     <>
       <Navbar />
       <PageTitle>All Macarons are tailored to your taste & style.</PageTitle>
       <Container>
-        <>test</>
         {products.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}

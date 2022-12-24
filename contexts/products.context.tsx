@@ -6,21 +6,22 @@ export const ProductsContext = createContext({
   products: [],
 });
 
+const GET_PRODUCTS = gql`
+  query Query {
+    products {
+      createdAt
+      description
+      id
+      name
+      price
+      updatedAt
+      imageUrl
+    }
+  }
+`;
+
 export const ProductsProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
-  const GET_PRODUCTS = gql`
-    query Query {
-      products {
-        createdAt
-        description
-        id
-        name
-        price
-        updatedAt
-        imageUrl
-      }
-    }
-  `;
 
   const { data, loading, error } = useQuery(GET_PRODUCTS);
 
