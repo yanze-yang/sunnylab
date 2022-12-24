@@ -16,7 +16,7 @@ type CardProps = {
 
 const CardWrapper = styled.div`
   border: 2px #000000 solid;
-  max-width: 20rem;
+  width: 20rem;
   border-radius: 0.3rem;
 `;
 

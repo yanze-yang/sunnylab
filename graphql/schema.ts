@@ -81,6 +81,19 @@ export const typeDefs = gql`
     products: [Product!]!
   }
 
+  type Mutation {
+    createProduct(input: AddProductInput!): Product!
+    updateProduct(id: ID!, input: AddProductInput!): Product!
+    removeProduct(id: ID!): Product!
+  }
+
+  input AddProductInput {
+    name: String!
+    price: Float!
+    imageUrl: String!
+    description: String!
+  }
+
   type Product {
     id: ID!
     name: String!
