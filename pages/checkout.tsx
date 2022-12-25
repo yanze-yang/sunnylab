@@ -27,8 +27,8 @@ const AddToCartButtonGroup = styled.div`
 `;
 
 const CartItem = ({ item }) => {
-  const { name, price, quantity, imageUrl } = item;
-  const { addItemToCart, removeItemFromCart, updateItemInCart } =
+  const { name, quantity, imageUrl } = item;
+  const { addItemToCart, removeItemFromCart, updateItemInCart, cartTotal } =
     useContext(CartContext);
 
   const addItemToCartHandler = () => {
@@ -75,9 +75,7 @@ const CartItem = ({ item }) => {
           />
         </AddToCartButtonGroup>
 
-        <p className="mt-auto text-lg font-bold">
-          ${price} * {quantity} = {price * quantity}
-        </p>
+        <p className="mt-auto text-lg font-bold">{cartTotal}</p>
       </div>
     </div>
   );
