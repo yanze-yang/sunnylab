@@ -1,10 +1,54 @@
 import Link from "next/link";
 import React, { useContext } from "react";
+import styled from "styled-components";
 import Navbar from "../components/Navbar";
 import { CartContext } from "../contexts/cart.context";
+import { BiPlus, BiMinus } from "react-icons/bi";
+
+const AddToCartButtonGroup = styled.div`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0.2rem 0.5rem;
+  border: 2px #000 solid;
+  border-radius: 0.3rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  width: 7rem;
+  cursor: pointer;
+
+  // select the second div
+  input {
+    font-size: 1.3rem;
+    cursor: auto;
+    width: 2rem;
+    text-align: center;
+  }
+`;
 
 const CartItem = ({ item }) => {
   const { name, price, quantity, imageUrl } = item;
+  const { addItemToCart, removeItemFromCart, updateItemInCart } =
+    useContext(CartContext);
+
+  const addItemToCartHandler = () => {
+    addItemToCart(item);
+  };
+
+  const removeItemFromCartHandler = () => {
+    if (quantity === 0) return;
+    removeItemFromCart(item);
+  };
+
+  const updateItemInCartHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    if (value === "" || parseInt(value) === 0) {
+      removeItemFromCartHandler();
+      return;
+    }
+
+    updateItemInCart(item, parseInt(value));
+  };
   return (
     <div className="flex flex-col rounded-lg bg-white sm:flex-row">
       <img
@@ -12,9 +56,25 @@ const CartItem = ({ item }) => {
         src={imageUrl}
         alt="image"
       />
-      <div className="flex w-full flex-col px-4 py-4">
+      <div className="flex w-full flex-col px-4 py-4 justify-between">
         <span className="font-semibold">{name}</span>
-        <span className="float-right text-gray-400">{quantity}</span>
+        <AddToCartButtonGroup>
+          <BiMinus
+            onClick={() => {
+              removeItemFromCartHandler();
+            }}
+          />
+          <input
+            value={quantity}
+            onChange={(e) => updateItemInCartHandler(e)}
+          />
+          <BiPlus
+            onClick={() => {
+              addItemToCartHandler();
+            }}
+          />
+        </AddToCartButtonGroup>
+
         <p className="mt-auto text-lg font-bold">
           ${price} * {quantity} = {price * quantity}
         </p>
