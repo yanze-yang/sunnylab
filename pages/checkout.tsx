@@ -1,8 +1,45 @@
+import Link from "next/link";
 import React, { useContext } from "react";
 import Navbar from "../components/Navbar";
 import { CartContext } from "../contexts/cart.context";
 
+const CartItem = ({ item }) => {
+  const { name, price, quantity, imageUrl } = item;
+  return (
+    <div className="flex flex-col rounded-lg bg-white sm:flex-row">
+      <img
+        className="m-2 h-24 w-28 rounded-md border object-cover object-center"
+        src={imageUrl}
+        alt="image"
+      />
+      <div className="flex w-full flex-col px-4 py-4">
+        <span className="font-semibold">{name}</span>
+        <span className="float-right text-gray-400">{quantity}</span>
+        <p className="mt-auto text-lg font-bold">
+          ${price} * {quantity} = {price * quantity}
+        </p>
+      </div>
+    </div>
+  );
+};
+
 export default function Checkout() {
+  const { cartItems } = useContext(CartContext);
+
+  if (cartItems.length === 0) {
+    return (
+      <div className="flex flex-col items-center justify-center h-screen">
+        <p className="text-2xl font-semibold">Your cart is empty</p>
+        <Link
+          href="/shop"
+          className="mt-4 px-4 py-2 text-sm font-medium text-white bg-gray-800 rounded-md hover:bg-gray-700"
+        >
+          Go to shop
+        </Link>
+      </div>
+    );
+  }
+
   return (
     <>
       <Navbar />
@@ -92,34 +129,9 @@ export default function Checkout() {
             Check your items. And select a suitable shipping method.
           </p>
           <div className="mt-8 space-y-3 rounded-lg border bg-white px-2 py-4 sm:px-6">
-            <div className="flex flex-col rounded-lg bg-white sm:flex-row">
-              <img
-                className="m-2 h-24 w-28 rounded-md border object-cover object-center"
-                src="https://images.unsplash.com/flagged/photo-1556637640-2c80d3201be8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c25lYWtlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
-                alt=""
-              />
-              <div className="flex w-full flex-col px-4 py-4">
-                <span className="font-semibold">
-                  Nike Air Max Pro 8888 - Super Light
-                </span>
-                <span className="float-right text-gray-400">42EU - 8.5US</span>
-                <p className="text-lg font-bold">$138.99</p>
-              </div>
-            </div>
-            <div className="flex flex-col rounded-lg bg-white sm:flex-row">
-              <img
-                className="m-2 h-24 w-28 rounded-md border object-cover object-center"
-                src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8c25lYWtlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
-                alt=""
-              />
-              <div className="flex w-full flex-col px-4 py-4">
-                <span className="font-semibold">
-                  Nike Air Max Pro 8888 - Super Light
-                </span>
-                <span className="float-right text-gray-400">42EU - 8.5US</span>
-                <p className="mt-auto text-lg font-bold">$238.99</p>
-              </div>
-            </div>
+            {cartItems.map((item) => (
+              <CartItem key={item.id} item={item} />
+            ))}
           </div>
 
           <p className="mt-8 text-lg font-medium">Shipping Methods</p>
