@@ -32,7 +32,14 @@ interface CartContextInterface {
   ) => void;
   quantityInCart: (product: cartProductProps) => number;
   cartCount: number;
+  cartTotal: number;
 }
+
+// export type TodoContextType = {
+//   todos: String;
+//   saveTodo: (todo) => void;
+//   updateTodo: (id: number) => void;
+// };
 
 export const CartContext = createContext<CartContextInterface | null>(null);
 
@@ -40,10 +47,19 @@ export const CartProvider = ({ children }) => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [cartItems, setCartItems] = useState([]);
   const [cartCount, setCartCount] = useState(0);
+  const [cartTotal, setCartTotal] = useState(0);
 
   useEffect(() => {
     const count = cartItems.reduce((acc, item) => acc + item.quantity, 0);
     setCartCount(count);
+  }, [cartItems]);
+
+  useEffect(() => {
+    const total = cartItems.reduce(
+      (acc, item) => acc + item.quantity * item.price,
+      0
+    );
+    setCartTotal(total);
   }, [cartItems]);
 
   const addItemToCart = (productToAdd) => {
@@ -111,6 +127,7 @@ export const CartProvider = ({ children }) => {
     quantityInCart,
     updateItemInCart,
     cartCount,
+    cartTotal,
   };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

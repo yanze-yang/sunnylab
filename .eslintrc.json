@@ -1,15 +1,15 @@
 {
   "extends": [
-    "next/core-web-vitals",
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended"
-  ],
-  "parser": "@typescript-eslint/parser",
-  "rules": {
-    "@next/next/no-img-element": "off",
-    "@typescript-eslint/no-unused-vars": "warn"
-  },
+    "next/core-web-vitals"
+    // "eslint:recommended",
+    // "plugin:@typescript-eslint/recommended"
+  ]
+  // "parser": "@typescript-eslint/parser",
+  // "rules": {
+  //   "@next/next/no-img-element": "off",
+  //   "@typescript-eslint/no-unused-vars": "warn"
+  // },
 
-  "plugins": ["@typescript-eslint"],
-  "root": true
+  // "plugins": ["@typescript-eslint"],
+  // "root": true
 }
