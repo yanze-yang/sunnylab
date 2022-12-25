@@ -1,8 +1,3 @@
-import { Query } from "./resolvers/Query";
-import { Product } from "./resolvers/Product";
-import { Category } from "./resolvers/Category";
-import { Review } from "./resolvers/Review";
-
 import { v4 as uuidv4 } from "uuid";
 
 export const resolvers = {
