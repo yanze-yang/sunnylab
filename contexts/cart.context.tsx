@@ -96,7 +96,7 @@ export const CartProvider = ({ children }) => {
   };
 
   // it's used in the Product page to show the quantity of the product in the cart
-  const quantityInCart = (product: any) => {
+  const quantityInCart = (product) => {
     const item = cartItems.find((item) => item.id === product.id);
     return item ? item.quantity : 0;
   };

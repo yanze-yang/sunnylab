@@ -1,5 +1,5 @@
 // apollo server setup for nextjs
-import { ApolloServer, gql } from "apollo-server-micro";
+import { ApolloServer } from "apollo-server-micro";
 import Cors from "micro-cors";
 import { resolvers } from "../../graphql/resolvers";
 import { createContext } from "../../graphql/context";

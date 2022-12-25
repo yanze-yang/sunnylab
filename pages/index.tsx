@@ -2,7 +2,6 @@ import Head from "next/head";
 import Navbar from "../components/Navbar";
 import HeroSection from "../components/Index-page/HeroSection";
 import { IntroSection } from "../components/Index-page/IntroSection";
-import Draw from "../components/cart/Draw";
 
 export default function Home() {
   return (
