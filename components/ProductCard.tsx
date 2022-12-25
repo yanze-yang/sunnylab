@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { BiPlus, BiMinus } from "react-icons/bi";
 import { CartContext } from "../contexts/cart.context";
@@ -129,8 +129,6 @@ export default function Card({ product }: CardProps) {
     updateItemInCart(product, parseInt(value));
   };
 
-  const x = 0;
-
   return (
     <>
       <CardWrapper>
@@ -156,11 +154,14 @@ export default function Card({ product }: CardProps) {
                   value={quantity}
                   onChange={(e) => updateItemInCartHandler(e)}
                 />
-                <BiPlus
-                  onClick={() => {
-                    addItemToCartHandler();
-                  }}
-                />
+                <div>
+                  <BiPlus
+                    style={{ height: "100%" }}
+                    onClick={() => {
+                      addItemToCartHandler();
+                    }}
+                  />
+                </div>
               </AddToCartButtonGroup>
             </ProductAddToCart>
           </Content>

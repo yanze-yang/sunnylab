@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { CartContext } from "../../contexts/cart.context";
-import Link from "next/link";
 import { useRouter } from "next/router";
 
 export default function Draw() {
