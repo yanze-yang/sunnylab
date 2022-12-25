@@ -27,8 +27,8 @@ const AddToCartButtonGroup = styled.div`
 `;
 
 const CartItem = ({ item }) => {
-  const { name, quantity, imageUrl } = item;
-  const { addItemToCart, removeItemFromCart, updateItemInCart, cartTotal } =
+  const { name, quantity, price, imageUrl } = item;
+  const { addItemToCart, removeItemFromCart, updateItemInCart } =
     useContext(CartContext);
 
   const addItemToCartHandler = () => {
@@ -75,14 +75,14 @@ const CartItem = ({ item }) => {
           />
         </AddToCartButtonGroup>
 
-        <p className="mt-auto text-lg font-bold">{cartTotal}</p>
+        <p className="mt-auto text-lg font-bold">$ {price}</p>
       </div>
     </div>
   );
 };
 
 export default function Checkout() {
-  const { cartItems } = useContext(CartContext);
+  const { cartItems, cartTotal } = useContext(CartContext);
 
   if (cartItems.length === 0) {
     return (
@@ -398,7 +398,7 @@ export default function Checkout() {
             <div className="mt-6 border-t border-b py-2">
               <div className="flex items-center justify-between">
                 <p className="text-sm font-medium text-gray-900">Subtotal</p>
-                <p className="font-semibold text-gray-900">$399.00</p>
+                <p className="font-semibold text-gray-900">{cartTotal}</p>
               </div>
               <div className="flex items-center justify-between">
                 <p className="text-sm font-medium text-gray-900">Shipping</p>
