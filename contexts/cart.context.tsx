@@ -35,12 +35,6 @@ interface CartContextInterface {
   cartTotal: number;
 }
 
-// export type TodoContextType = {
-//   todos: String;
-//   saveTodo: (todo) => void;
-//   updateTodo: (id: number) => void;
-// };
-
 export const CartContext = createContext<CartContextInterface | null>(null);
 
 export const CartProvider = ({ children }) => {
