@@ -4,8 +4,8 @@ export const resolvers = {
   // Query Resolver
   Query: {
     hello: () => "Hello World!",
-    products: (parent, args, ctx) => {
-      return ctx.prisma.product.findMany();
+    products: async (parent, args, ctx) => {
+      return await ctx.prisma.product.findMany();
     },
   },
 

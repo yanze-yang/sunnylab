@@ -1,11 +1,3 @@
-// import { categories, products, reviews } from "./db";
-
-// export const context = {
-//   categories,
-//   products,
-//   reviews,
-// };
-
 import { PrismaClient } from "@prisma/client";
 import prisma from "../lib/prisma";
 
