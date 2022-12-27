@@ -3,15 +3,10 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import { BiPlus, BiMinus } from "react-icons/bi";
 import { CartContext } from "../contexts/cart.context";
+import { IProduct } from "../prisma/type";
 
 type CardProps = {
-  product: {
-    id: string | number;
-    name: string;
-    description: string;
-    price: number;
-    imageUrl: string;
-  };
+  product: IProduct;
 };
 
 const CardWrapper = styled.div`
@@ -100,7 +95,7 @@ const AddToCartButtonGroup = styled.div`
 `;
 
 export default function Card({ product }: CardProps) {
-  const { name, description, price, imageUrl } = product;
+  const { name, description, price, imageUrl, category } = product;
   const {
     addItemToCart,
     removeItemFromCart,
@@ -138,6 +133,7 @@ export default function Card({ product }: CardProps) {
           </ImageWrapper>
           <Content>
             <ProductName>{name}</ProductName>
+            <ProductName>{category.name}</ProductName>
             <ProductDescription>{description}</ProductDescription>
             <ProductAddToCart>
               <Price>

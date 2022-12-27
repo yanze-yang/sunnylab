@@ -26,7 +26,7 @@ export const typeDefs = gql`
     price: Float!
     imageUrl: String!
     description: String!
-    category: Category!
+    category: Category
     createdAt: String!
     updatedAt: String!
   }

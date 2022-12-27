@@ -4,7 +4,7 @@ export interface IProduct {
   price: number;
   imageUrl: string;
   description: string;
-  category: ICategory;
+  category?: ICategory;
   createdAt: string;
   updatedAt: string;
 }

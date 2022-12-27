@@ -9,15 +9,21 @@ export const ProductsContext = createContext({
 });
 
 const GET_PRODUCTS = gql`
-  query Query {
+  query Products {
     products {
-      createdAt
-      description
       id
       name
       price
-      updatedAt
       imageUrl
+      description
+      category {
+        id
+        name
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
     }
   }
 `;
