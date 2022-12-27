@@ -79,6 +79,7 @@ export const typeDefs = gql`
   type Query {
     hello: String
     products: [Product!]!
+    categories: [Category!]!
   }
 
   type Mutation {
@@ -100,6 +101,15 @@ export const typeDefs = gql`
     price: Float!
     imageUrl: String!
     description: String!
+    category: Category!
+    createdAt: String!
+    updatedAt: String!
+  }
+
+  type Category {
+    id: ID!
+    name: String!
+    products: [Product!]!
     createdAt: String!
     updatedAt: String!
   }

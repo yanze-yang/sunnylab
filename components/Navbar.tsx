@@ -74,6 +74,9 @@ const Menu = styled.div`
 const Links = () => {
   return (
     <>
+      <Link href="/admin" style={{ color: "#9c99e9" }}>
+        Admin
+      </Link>
       <Link href="/shop">All Macarons</Link>
       <div>contact us</div>
       <div>About</div>

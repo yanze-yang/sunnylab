@@ -5,7 +5,18 @@ export const resolvers = {
   Query: {
     hello: () => "Hello World!",
     products: async (parent, args, ctx) => {
-      return await ctx.prisma.product.findMany();
+      return await ctx.prisma.product.findMany({
+        include: {
+          category: true,
+        },
+      });
+    },
+    categories: async (parent, args, ctx) => {
+      return await ctx.prisma.category.findMany({
+        include: {
+          products: true,
+        },
+      });
     },
   },
 

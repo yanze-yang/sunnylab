@@ -1,23 +1,47 @@
 import { createContext, useState, useEffect } from "react";
 
-import { gql, useQuery } from "@apollo/client";
+import { ApolloError, gql, useQuery } from "@apollo/client";
 
-export const ProductsContext = createContext({
-  products: [],
-  loading: false,
-  error: null,
-});
+export interface IProduct {
+  id: string;
+  name: string;
+  price: number;
+  description: string;
+  imageUrl: string;
+  category: ICategoty;
+  createdAt: string;
+  updatedAt: string;
+}
+
+interface ICategoty {
+  id: string;
+  name: string;
+}
+
+interface ProductsContextInterface {
+  products: IProduct[];
+  loading: boolean;
+  error: ApolloError;
+}
+
+export const ProductsContext = createContext<ProductsContextInterface | null>(
+  null
+);
 
 const GET_PRODUCTS = gql`
-  query Query {
+  query Products {
     products {
-      createdAt
-      description
       id
       name
       price
-      updatedAt
       imageUrl
+      description
+      createdAt
+      updatedAt
+      category {
+        id
+        name
+      }
     }
   }
 `;
