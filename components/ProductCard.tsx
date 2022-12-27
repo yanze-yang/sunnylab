@@ -95,7 +95,7 @@ const AddToCartButtonGroup = styled.div`
 `;
 
 export default function Card({ product }: CardProps) {
-  const { name, description, price, imageUrl, category } = product;
+  const { name, description, price, imageUrl } = product;
   const {
     addItemToCart,
     removeItemFromCart,
@@ -133,7 +133,7 @@ export default function Card({ product }: CardProps) {
           </ImageWrapper>
           <Content>
             <ProductName>{name}</ProductName>
-            <ProductName>{category.name}</ProductName>
+            {/* <ProductName>{category.name}</ProductName> */}
             <ProductDescription>{description}</ProductDescription>
             <ProductAddToCart>
               <Price>
