@@ -1,116 +1,44 @@
-import { gql } from "apollo-server-express";
+import { gql } from "apollo-server-micro";
+import { makeSchema } from "nexus";
+import { objectType, queryType } from "nexus";
+import { join } from "path";
 
 // export const typeDefs = gql`
 //   type Query {
 //     hello: String
-//     products(filter: ProductFilterInput): [Product!]!
-//     product(id: ID!): Product
+//     products: [Product!]!
 //     categories: [Category!]!
-//     category(id: ID!): Category
-//     review(id: ID!): Review
 //   }
 
 //   type Mutation {
 //     createProduct(input: AddProductInput!): Product!
-//     createCategory(input: AddCategoryInput): Category!
-//     createReview(
-//       title: String!
-//       rating: Int!
-//       comment: String!
-//       productId: ID!
-//     ): Review!
+//     updateProduct(id: ID!, input: AddProductInput!): Product!
+//     removeProduct(id: ID!): Product!
+//   }
+
+//   input AddProductInput {
+//     name: String!
+//     price: Float!
+//     imageUrl: String!
+//     description: String!
 //   }
 
 //   type Product {
 //     id: ID!
 //     name: String!
 //     price: Float!
-//     image: String!
+//     imageUrl: String!
 //     description: String!
-//     quantity: Int!
-//     onSale: Boolean!
 //     category: Category!
-//     reviews: [Review!]!
+//     createdAt: String!
+//     updatedAt: String!
 //   }
 
 //   type Category {
 //     id: ID!
 //     name: String!
-//     products(filter: ProductFilterInput): [Product!]!
-//   }
-
-//   type Review {
-//     id: ID!
-//     date: String!
-//     title: String!
-//     rating: Int!
-//     comment: String!
-//   }
-
-//   input ProductFilterInput {
-//     onSale: Boolean
-//     avgRating: Int
-//   }
-
-//   input AddCategoryInput {
-//     name: String!
-//   }
-
-//   input AddProductInput {
-//     name: String!
-//     # price: Float!
-//     # image: String!
-//     # description: String!
-//     # quantity: Int!
-//     # onSale: Boolean!
-//     categoryId: String!
-//   }
-
-//   interface Book {
-//     title: String
-//   }
-
-//   type ChildBook implements Book {
-//     description: String
+//     products: [Product!]!
+//     createdAt: String!
+//     updatedAt: String!
 //   }
 // `;
-
-export const typeDefs = gql`
-  type Query {
-    hello: String
-    products: [Product!]!
-    categories: [Category!]!
-  }
-
-  type Mutation {
-    createProduct(input: AddProductInput!): Product!
-    updateProduct(id: ID!, input: AddProductInput!): Product!
-    removeProduct(id: ID!): Product!
-  }
-
-  input AddProductInput {
-    name: String!
-    price: Float!
-    imageUrl: String!
-    description: String!
-  }
-
-  type Product {
-    id: ID!
-    name: String!
-    price: Float!
-    imageUrl: String!
-    description: String!
-    category: Category!
-    createdAt: String!
-    updatedAt: String!
-  }
-
-  type Category {
-    id: ID!
-    name: String!
-    products: [Product!]!
-    createdAt: String!
-    updatedAt: String!
-  }
-`;

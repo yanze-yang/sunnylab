@@ -12,11 +12,19 @@ export const resolvers = {
       });
     },
     categories: async (parent, args, ctx) => {
-      return await ctx.prisma.category.findMany({
-        include: {
-          products: true,
-        },
-      });
+      // return await ctx.prisma.category.findMany({
+      //   include: {
+      //     products: true,
+      //   },
+      // });
+
+      async (parent, args, ctx) => {
+        return await ctx.prisma.product.findMany({
+          include: {
+            category: true,
+          },
+        });
+      };
     },
   },
 
