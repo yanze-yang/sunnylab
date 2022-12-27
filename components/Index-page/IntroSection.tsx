@@ -67,7 +67,7 @@ const Right = styled.div`
   }
 `;
 
-export function IntroSection() {
+export default function IntroSection() {
   return (
     <>
       <Section>
