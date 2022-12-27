@@ -16,12 +16,12 @@ const GET_PRODUCTS = gql`
       price
       imageUrl
       description
-      # category {
-      #   id
-      #   name
-      #   createdAt
-      #   updatedAt
-      # }
+      category {
+        id
+        name
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
     }
@@ -32,6 +32,7 @@ export const ProductsProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
 
   const { data, loading, error } = useQuery(GET_PRODUCTS);
+  console.log("data", data);
 
   useEffect(() => {
     if (data) {
