@@ -16,12 +16,12 @@ const GET_PRODUCTS = gql`
       price
       imageUrl
       description
-      category {
-        id
-        name
-        createdAt
-        updatedAt
-      }
+      # category {
+      #   id
+      #   name
+      #   createdAt
+      #   updatedAt
+      # }
       createdAt
       updatedAt
     }
