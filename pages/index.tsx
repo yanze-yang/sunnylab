@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Navbar from "../components/Navbar";
-import HeroSection from "../components/index-page/HeroSection";
-import IntroSection from "../components/index-page/IntroSection";
+import HeroSection from "../components/indexPage/HeroSection";
+import IntroSection from "../components/indexPage/IntroSection";
 
 export default function Home() {
   return (
