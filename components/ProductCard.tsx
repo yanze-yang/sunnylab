@@ -133,7 +133,7 @@ export default function Card({ product }: CardProps) {
           </ImageWrapper>
           <Content>
             <ProductName>{name}</ProductName>
-            <ProductName>{category ? category.name : null}</ProductName>
+            {/* <ProductName>{category ? category.name : null}</ProductName> */}
             <ProductDescription>{description}</ProductDescription>
             <ProductAddToCart>
               <Price>

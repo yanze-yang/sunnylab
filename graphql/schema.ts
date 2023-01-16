@@ -27,6 +27,7 @@ export const typeDefs = gql`
     imageUrl: String!
     description: String!
     category: Category
+    categoryId: String
     createdAt: String!
     updatedAt: String!
   }
